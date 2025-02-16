@@ -2,7 +2,6 @@
 
 volatile int g_cnt = 0;
 volatile char g_but_flag = 0;
-char g_str[10];
 
 // This code creates a progress bar on an OLED screen that
 // increases when the button is pressed.
@@ -13,6 +12,7 @@ void btn_callback(uint gpio, uint32_t events) {
 
 
 void update_display(void) {
+  char g_str[10];
   if (g_but_flag){
     
     g_but_flag = 0;
