@@ -1,6 +1,5 @@
 #include "asf.h"
 
-volatile int g_cnt = 0;
 volatile char g_but_flag = 0;
 
 // This code creates a progress bar on an OLED screen that
@@ -11,7 +10,7 @@ void btn_callback(uint gpio, uint32_t events) {
 }
 
 
-void update_display(void) {
+void update_display(int g_cnt) {
   char g_str[10];
   if (g_but_flag){
     
@@ -35,7 +34,8 @@ void update_display(void) {
 void main(void) {
   // ...
   gpio_set_irq_enabled_with_callback(BOTAO, GPIO_IRQ_EDGE_FALL, true, &btn_callback);
+  int g_cnt = 0
   while (1) {
-    update_display(); 
+    update_display(g_cnt); 
   }
 }
